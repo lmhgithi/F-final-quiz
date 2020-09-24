@@ -17,8 +17,6 @@ class Groups extends Component {
       .then((Response) => {
         if (Response.status === 200) {
           return Response.json();
-        } else {
-          message.error('获取分组失败');
         }
       })
       .then((jsonData) => {
@@ -48,7 +46,6 @@ class Groups extends Component {
   };
 
   render() {
-    console.log(this.state.groups)
     return (
       <div className="students-group">
         <div className="group-header">
@@ -63,6 +60,7 @@ class Groups extends Component {
             <GroupName 
               group={this.state.groups[key]}
             />
+            
             <Group 
               group={this.state.groups[key]}
             />

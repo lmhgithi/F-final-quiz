@@ -1,16 +1,25 @@
 .team-name {
-    background-color: #929aab;
-    text-align: center;
-    color: white;
-    padding: 5px 0px;
-    font-size: 15px;
-    margin: 0px;
+  display: flex;
+  justify-content: center;
+  background-color: #929aab;
+  text-align: center;
+  color: white;
+  padding: 5px 0px;
+  font-size: 15px;
+  margin: 0px;
 }
-
-.team-name-input {
-    background-color: #eeeeef;
-    width: 100%;
-    text-align: center;
-    font-size: 1rem;
-    font-weight: bold;
+.trainers-name {
+  display: flex;
+  position: absolute;
+  right: 30px;
+}
+.trainer {
+  background-color: #eeeeee;
+  width: 100px;
+  height: 30px;
+  margin: 5px 10px;
+  text-align: center;
+  padding: 2px;
+  font-weight: bold;
+  color: black;
 }
