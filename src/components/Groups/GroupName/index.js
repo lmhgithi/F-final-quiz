@@ -6,13 +6,20 @@ class GroupName extends Component {
     displayInputBox: false,
     groupName: this.props.group.name,
   };
-  changeGroupName = (keyCode) => {
-    if (keyCode == 13) {
-      URL = `http://localhost:8080/groups/${this.props.group.name}/${this.state.groupName}`;
+  changeGroupName = (event) => {
+    if (event.keyCode == 13) {
+      URL = `http://localhost:8080/groups/${this.props.group.id}`;
       fetch(URL, {
         method: 'Put',
+        body: JSON.stringify({
+          name: this.state.groupName,
+        }),
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
       }).then((Response) => {
-        if (Response.status === 200) {
+        if (Response.status === 204) {
           this.setState({
             displayInputBox: false,
             groupName: this.state.groupName,
@@ -39,31 +46,30 @@ class GroupName extends Component {
     });
   };
   render() {
-    if (this.state.displayInputBox) {
-      return (
-        <input
-          className="team-name-input"
-          onKeyDown={() => this.changeGroupName(event)}
-          value={this.state.groupName}
-          onChange={() => this.handleChange()}
-        />
-      );
-    } else {
-      return (
-        <div className="team-name">
+    console.log(this.props)
+    return (
+      <div className="team-name">
+        {this.state.displayInputBox ? (
+          <input
+            className="team-name-input"
+            onKeyUp={() => this.changeGroupName(event)}
+            value={this.state.groupName}
+            onChange={() => this.handleChange(event)}
+          />
+        ) : (
           <p onClick={() => this.displayChangeGroupName()}>{this.state.groupName}</p>
-          <div className="trainers-name">
-            {Object.keys(this.props.group.trainerDtoList).map((childrenKey) => (
-              <p
-                className="trainer"
-                key={`${childrenKey}-group`}
-              >{`${this.props.group.trainerDtoList[childrenKey].id}.
+        )}
+        <div className="trainers-name">
+          {Object.keys(this.props.group.trainerDtoList).map((childrenKey) => (
+            <p
+              className="trainer"
+              key={`${childrenKey}-group`}
+            >{`${this.props.group.trainerDtoList[childrenKey].id}.
                     ${this.props.group.trainerDtoList[childrenKey].name}`}</p>
-            ))}
-          </div>
+          ))}
         </div>
-      );
-    }
+      </div>
+    );
   }
 }
 
