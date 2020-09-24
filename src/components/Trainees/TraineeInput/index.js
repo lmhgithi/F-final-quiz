@@ -62,7 +62,8 @@ class TraineeInput extends Component {
           onCancel={() =>
             this.setState({
               displacyForm: false,
-            })}
+            })
+          }
           onOk={this.addTrainee}
         >
           <Form>
@@ -72,7 +73,7 @@ class TraineeInput extends Component {
             <Form.Item
               label="邮箱"
               name="email"
-              rules={[{ type: 'email', message: '请输入正确的邮箱' }]}
+              rules={[{ type: 'email', required: true, message: '请输入正确的邮箱' }]}
             >
               <Input name="email" onChange={this.handleChange} />
             </Form.Item>

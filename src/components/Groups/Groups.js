@@ -46,6 +46,7 @@ class Groups extends Component {
   };
 
   render() {
+    console.log(this.state.groups)
     return (
       <div className="students-group">
         <div className="group-header">
@@ -55,7 +56,7 @@ class Groups extends Component {
           </button>
         </div>
 
-        {Object.keys(this.state.groups).map((key) => (
+        {this.state.groups && Object.keys(this.state.groups).map((key) => (
           <div className="group" key={key}>
             <GroupName 
               group={this.state.groups[key]}
