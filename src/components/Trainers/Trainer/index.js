@@ -30,7 +30,7 @@ class Trainer extends Component {
           {`${this.props.trainer.id}. ${this.props.trainer.name}`}
         </p>
         <Modal
-          title="是否要删除学员"
+          title="是否要删除讲师"
           visible={this.state.deleteTrainerVisible}
           onOk={this.deleteTrainer}
           onCancel={() => this.setState({deleteTrainerVisible: false})}
