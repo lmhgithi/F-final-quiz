@@ -5,12 +5,12 @@ class Group extends Component {
   render() {
     return (
       <div className="students-group-content">
-        {Object.keys(this.props.group.students).map((childrenKey) => (
+        {Object.keys(this.props.group.traineeDtoList).map((childrenKey) => (
           <p
             className="student"
             key={`${childrenKey}-group`}
-          >{`${this.props.group.students[childrenKey].num}.
-                    ${this.props.group.students[childrenKey].name}`}</p>
+          >{`${this.props.group.traineeDtoList[childrenKey].id}.
+                    ${this.props.group.traineeDtoList[childrenKey].name}`}</p>
         ))}
       </div>
     )

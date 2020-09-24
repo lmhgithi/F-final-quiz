@@ -4,11 +4,11 @@ import './groupName.scss';
 class GroupName extends Component {
   state = {
     displayInputBox: false,
-    groupName: this.props.groupName,
+    groupName: this.props.group.name,
   };
   changeGroupName = (keyCode) => {
     if (keyCode == 13) {
-      URL = `http://localhost:8080/groups/${this.props.groupName}/${this.state.groupName}`;
+      URL = `http://localhost:8080/groups/${this.props.group.name}/${this.state.groupName}`;
       fetch(URL, {
         method: 'Put',
       })
@@ -21,7 +21,7 @@ class GroupName extends Component {
           } else {
             this.setState({
                 displayInputBox: false,
-                groupName: this.props.groupName,
+                groupName: this.props.group.name,
               });
           }
         });

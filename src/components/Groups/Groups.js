@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { message } from 'antd';
 import GroupName from './GroupName'
 import Group from './Group';
 import './groups.scss';
@@ -8,7 +9,7 @@ class Groups extends Component {
     groups: {},
   };
 
-  getGroups = () => {
+  componentDidMount() {
     URL = 'http://localhost:8080/groups';
     fetch(URL, {
       method: 'GET',
@@ -17,7 +18,26 @@ class Groups extends Component {
         if (Response.status === 200) {
           return Response.json();
         } else {
-          Promise.reject();
+          message.error('获取分组失败');
+        }
+      })
+      .then((jsonData) => {
+        this.setState({
+          groups: jsonData,
+        });
+      });
+  }
+
+  getGroups = () => {
+    URL = 'http://localhost:8080/groups';
+    fetch(URL, {
+      method: 'POST',
+    })
+      .then((Response) => {
+        if (Response.status === 200) {
+          return Response.json();
+        } else {
+          message.error('分组失败');
         }
       })
       .then((jsonData) => {
@@ -28,6 +48,7 @@ class Groups extends Component {
   };
 
   render() {
+    console.log(this.state.groups)
     return (
       <div className="students-group">
         <div className="group-header">
@@ -40,7 +61,7 @@ class Groups extends Component {
         {Object.keys(this.state.groups).map((key) => (
           <div className="group" key={key}>
             <GroupName 
-              groupName={this.state.groups[key].groupName}
+              group={this.state.groups[key]}
             />
             <Group 
               group={this.state.groups[key]}

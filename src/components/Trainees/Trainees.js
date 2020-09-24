@@ -38,7 +38,7 @@ class Trainees extends Component {
         <h2>学员列表</h2>
         <div className="students-list-content">
           {Object.keys(this.state.students).map((key) =>
-            this.state.students[key].groupId ? null : (
+            this.state.students[key].groupId!=0 ? null : (
               <Trainee
                 key={key}
                 trainee={this.state.students[key]}

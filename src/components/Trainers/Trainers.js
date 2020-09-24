@@ -37,7 +37,7 @@ class Trainers extends Component {
         <h2>讲师列表</h2>
         <div className="trainers-list-content">
           {Object.keys(this.state.trainers).map((key) =>
-            this.state.trainers[key].groupId ? null : (
+            this.state.trainers[key].groupId!=0 ? null : (
               <Trainer
                 key={key}
                 trainer={this.state.trainers[key]}
