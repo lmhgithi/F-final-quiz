@@ -1,63 +1,100 @@
 import React, { Component } from 'react';
+import { Form, Input, message, Modal } from 'antd';
 import './traineeInput.scss';
 
-
-class AddStudent extends Component {
+class TraineeInput extends Component {
   state = {
-    displayInputBox: false,
-    studentName: '',
+    displacyForm: false,
+    name: '',
+    email: '',
+    office: '',
+    github: '',
   };
-  addStudent = (keyCode) => {
-    if (keyCode == 13) {
-      URL = `http://localhost:8080/students/${this.state.studentName}`;
-      fetch(URL, {
-        method: 'POST',
-      })
-        .then((Response) => {
-          if (Response.status === 200) {
-            this.props.getStudents();
-          } else {
-            Promise.reject();
-          }
+  addTrainee = () => {
+    fetch('http://localhost:8080/trainees', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: this.state.name,
+        office: this.state.office,
+        email: this.state.email,
+        github: this.state.github,
+      }),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    }).then((Response) => {
+      if (Response.status === 201) {
+        this.setState({
+          displacyForm: false,
         });
-
-      this.setState({
-        displayInputBox: false,
-        studentName: '',
-      });
-    }
-  };
-
-  displayAddStudent = () => {
-    this.setState({
-      displayInputBox: true,
+        this.props.getTrainees();
+      } else {
+        alert('添加学员失败');
+      }
     });
   };
 
-  handleChange = () => {
-      this.setState({
-        studentName: event.target.value,
-      })
-  }
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
+
   render() {
-    if (this.state.displayInputBox) {
-      return (
-        <input className="add-students-input-box" 
-        name='name'
-        onKeyUp={() => this.addStudent(event.keyCode)}
-        value={this.state.studentName}
-        onChange={() => this.handleChange()}
-        />
-            
-      );
-    } else {
-      return (
-        <p className="add-students-botton" onClick={() => this.displayAddStudent()}>
+    return (
+      <div>
+        <p
+          className="add-students-botton"
+          onClick={() =>
+            this.setState({
+              displacyForm: true,
+            })
+          }
+        >
           +添加学员
         </p>
-      );
-    }
+        <Modal
+          visible={this.state.displacyForm}
+          title="添加学员"
+          okText="确认"
+          cancelText="取消"
+          onCancel={() =>
+            this.setState({
+              displacyForm: false,
+            })}
+          onOk={this.addTrainee}
+        >
+          <Form>
+            <Form.Item label="姓名" name="name" rules={[{ required: true, message: '此项为必填' }]}>
+              <Input name="name" onChange={this.handleChange} />
+            </Form.Item>
+            <Form.Item
+              label="邮箱"
+              name="email"
+              rules={[{ type: 'email', message: '请输入正确的邮箱' }]}
+            >
+              <Input name="email" onChange={this.handleChange} />
+            </Form.Item>
+            <Form.Item
+              label="办公室"
+              name="office"
+              rules={[{ required: true, message: '此项为必填' }]}
+            >
+              <Input name="office" onChange={this.handleChange} />
+            </Form.Item>
+            <Form.Item
+              label="Github账号"
+              name="github"
+              rules={[{ required: true, message: '此项为必填' }]}
+            >
+              <Input name="github" onChange={this.handleChange} />
+            </Form.Item>
+          </Form>
+        </Modal>
+      </div>
+    );
   }
 }
 
-export default AddStudent;
+export default TraineeInput;

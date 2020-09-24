@@ -8,11 +8,11 @@ class Trainees extends Component {
   };
 
   componentDidMount = () => {
-    this.getStudents();
+    this.getTrainees();
   };
 
-  getStudents = () => {
-    URL = 'http://localhost:8080/students';
+  getTrainees = () => {
+    URL = 'http://localhost:8080/trainees';
     fetch(URL, {
       method: 'GET',
     })
@@ -31,18 +31,17 @@ class Trainees extends Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <div className="students-list">
         <h2>学员列表</h2>
         <div className="students-list-content">
           {Object.keys(this.state.students).map((key) => (
             <p className="student" key={key}>
-              {`${this.state.students[key].num}. ${this.state.students[key].name}`}
+              {`${this.state.students[key].id}. ${this.state.students[key].name}`}
             </p>
           ))}
-          <TraineeInput
-          getStudents={() => this.getStudents()}
-          />
+          <TraineeInput getTrainees={this.getTrainees}/>
         </div>
       </div>
     );
