@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import TraineeInput from '../AddTrainee/TraineeInput';
+import TraineeInput from '../TraineeInput/TraineeInput';
 import './trainees.scss';
+import Trainee from '../Trainee';
 
 class Trainees extends Component {
   state = {
@@ -28,21 +29,23 @@ class Trainees extends Component {
           students: jsonData,
         });
       });
-  }
+  };
 
   render() {
-    console.log(this.state)
     return (
       <div className="students-list">
         <h2>学员列表</h2>
         <div className="students-list-content">
-          {Object.keys(this.state.students).map((key) => (
-            this.state.students[key].groupId ? null : 
-            <p className="student" key={key}>
-              {`${this.state.students[key].id}. ${this.state.students[key].name}`}
-            </p>
-          ))}
-          <TraineeInput getTrainees={this.getTrainees}/>
+          {Object.keys(this.state.students).map((key) =>
+            this.state.students[key].groupId ? null : (
+              <Trainee
+                key={key}
+                trainee={this.state.students[key]}
+                getTrainees={this.getTrainees}
+              />
+            )
+          )}
+          <TraineeInput getTrainees={this.getTrainees} />
         </div>
       </div>
     );

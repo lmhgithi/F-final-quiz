@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Groups from '../../components/Groups/Groups';
-import Trainees from '../../components/Trainee/Trainees';
+import Trainees from '../../components/Trainees/Trainees';
 import './App.scss';
 
 class App extends Component {
