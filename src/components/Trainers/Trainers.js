@@ -13,7 +13,7 @@ class Trainers extends Component {
   };
 
   getTrainers = () => {
-    URL = 'http://localhost:8080/trainers';
+    URL = 'http://localhost:8080/trainerDtos?grouped=false';
     fetch(URL, {
       method: 'GET',
     })
@@ -36,15 +36,9 @@ class Trainers extends Component {
       <div className="trainers-list">
         <h2>讲师列表</h2>
         <div className="trainers-list-content">
-          {Object.keys(this.state.trainers).map((key) =>
-            this.state.trainers[key].groupId!=0 ? null : (
-              <Trainer
-                key={key}
-                trainer={this.state.trainers[key]}
-                getTrainers={this.getTrainers}
-              />
-            )
-          )}
+          {Object.keys(this.state.trainers).map((key) => (
+            <Trainer key={key} trainer={this.state.trainers[key]} getTrainers={this.getTrainers} />
+          ))}
           <TrainerInput getTrainers={this.getTrainers} />
         </div>
       </div>

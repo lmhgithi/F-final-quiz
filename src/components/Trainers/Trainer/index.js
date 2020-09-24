@@ -9,7 +9,7 @@ class Trainer extends Component {
   };
 
   deleteTrainer = () => {
-    fetch(`http://localhost:8080/trainers/${this.props.trainer.id}`, {
+    fetch(`http://localhost:8080/trainerDtos/${this.props.trainer.id}`, {
       method: 'DELETE',
     }).then((Response) => {
       if (Response.status === 204) {

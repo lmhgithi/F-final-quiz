@@ -10,7 +10,7 @@ class GroupName extends Component {
     if (event.keyCode == 13) {
       URL = `http://localhost:8080/groups/${this.props.group.id}`;
       fetch(URL, {
-        method: 'Put',
+        method: 'PATCH',
         body: JSON.stringify({
           name: this.state.groupName,
         }),
@@ -46,7 +46,6 @@ class GroupName extends Component {
     });
   };
   render() {
-    console.log(this.props)
     return (
       <div className="team-name">
         {this.state.displayInputBox ? (

@@ -9,7 +9,7 @@ class Trainee extends Component {
   };
 
   deleteTrainee = () => {
-    fetch(`http://localhost:8080/trainees/${this.props.trainee.id}`, {
+    fetch(`http://localhost:8080/traineeDtos/${this.props.trainee.id}`, {
       method: 'DELETE',
     }).then((Response) => {
       if (Response.status === 204) {

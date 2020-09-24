@@ -9,7 +9,7 @@ export default class TrainerInput extends Component {
   };
   addTrainer = (event) => {
     if (event.keyCode == 13) {
-      URL = `http://localhost:8080/trainers`;
+      URL = `http://localhost:8080/trainerDtos`;
       fetch(URL, {
         method: 'POST',
         body: JSON.stringify({

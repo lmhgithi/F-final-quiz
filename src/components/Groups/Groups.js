@@ -27,7 +27,7 @@ class Groups extends Component {
   }
 
   getGroups = () => {
-    URL = 'http://localhost:8080/groups';
+    URL = 'http://localhost:8080/groups/auto-grouping';
     fetch(URL, {
       method: 'POST',
     })

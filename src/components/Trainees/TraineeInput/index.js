@@ -11,7 +11,7 @@ class TraineeInput extends Component {
     github: '',
   };
   addTrainee = () => {
-    fetch('http://localhost:8080/trainees', {
+    fetch('http://localhost:8080/traineeDtos', {
       method: 'POST',
       body: JSON.stringify({
         name: this.state.name,

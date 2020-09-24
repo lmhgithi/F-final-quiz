@@ -3,7 +3,6 @@ import TraineeInput from './TraineeInput';
 import Trainee from './Trainee';
 import './trainees.scss';
 
-
 class Trainees extends Component {
   state = {
     students: [],
@@ -14,7 +13,7 @@ class Trainees extends Component {
   };
 
   getTrainees = () => {
-    URL = 'http://localhost:8080/trainees';
+    URL = 'http://localhost:8080/traineeDtos?grouped=false';
     fetch(URL, {
       method: 'GET',
     })
@@ -37,15 +36,9 @@ class Trainees extends Component {
       <div className="students-list">
         <h2>学员列表</h2>
         <div className="students-list-content">
-          {Object.keys(this.state.students).map((key) =>
-            this.state.students[key].groupId!=0 ? null : (
-              <Trainee
-                key={key}
-                trainee={this.state.students[key]}
-                getTrainees={this.getTrainees}
-              />
-            )
-          )}
+          {Object.keys(this.state.students).map((key) => (
+            <Trainee key={key} trainee={this.state.students[key]} getTrainees={this.getTrainees} />
+          ))}
           <TraineeInput getTrainees={this.getTrainees} />
         </div>
       </div>
