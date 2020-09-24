@@ -3,6 +3,7 @@ import Groups from '../../components/Groups/Groups';
 import Trainees from '../../components/Trainees/Trainees';
 import Trainers from '../../components/Trainers/Trainers';
 import './App.scss';
+import 'antd/dist/antd.css';
 
 class App extends Component {
   render() {
