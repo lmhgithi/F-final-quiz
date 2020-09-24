@@ -14,7 +14,7 @@ class Trainee extends Component {
     }).then((Response) => {
       if (Response.status === 204) {
         this.setState({
-          displacyForm: false,
+          deleteTraineeVisible: false,
         });
         this.props.getTrainees();
       } else {

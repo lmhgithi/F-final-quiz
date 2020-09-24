@@ -1,0 +1,14 @@
+.add-trainers-botton {
+    border-style: solid;
+    border-color: #929aab;
+    border-width: 1px;
+    width: 100px;
+    height: 30px;
+    margin: 5px 10px;
+    text-align: center;
+    padding: 2px;
+    cursor: pointer;
+    &:hover {
+        border-color: blue;
+    }
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import GroupName from '../GroupName/GroupName'
-import Group from '../Group/Group';
+import GroupName from './GroupName'
+import Group from './Group';
 import './groups.scss';
 
 class Groups extends Component {

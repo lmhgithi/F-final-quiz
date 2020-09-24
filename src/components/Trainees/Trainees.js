@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import TraineeInput from '../TraineeInput/TraineeInput';
+import TraineeInput from './TraineeInput';
+import Trainee from './Trainee';
 import './trainees.scss';
-import Trainee from '../Trainee';
+
 
 class Trainees extends Component {
   state = {
