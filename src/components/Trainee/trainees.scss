@@ -1,0 +1,16 @@
+
+.students-list-content {
+    display: flex;
+    flex-flow: row wrap;
+    
+}
+
+.student {
+    background-color: #eeeeee;
+    width: 100px;
+    height: 30px;
+    margin: 5px 10px;
+    text-align: center;
+    padding: 2px;
+    font-weight: bold;
+}

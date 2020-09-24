@@ -1,0 +1,20 @@
+.group-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.group {
+    border-style: solid;
+    border-color: #929aab;
+    border-width: 1px;
+    margin: 10px 0px;
+}
+
+.group-button {
+    background-color: #ea5455;
+    border-style: hidden;
+    color: white;
+    padding: 0px 30px;
+    height: 40px;
+    margin: 10px;
+}
