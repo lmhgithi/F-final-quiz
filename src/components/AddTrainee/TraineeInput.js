@@ -30,7 +30,7 @@ class TraineeInput extends Component {
         });
         this.props.getTrainees();
       } else {
-        alert('添加学员失败');
+        message.error('添加学员失败');
       }
     });
   };
