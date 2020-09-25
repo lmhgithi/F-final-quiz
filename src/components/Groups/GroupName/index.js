@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './groupName.scss';
 
+//TODO feedback: 组件的名字没有直接反应它的职责
 class GroupName extends Component {
   state = {
     displayInputBox: false,
@@ -8,6 +9,7 @@ class GroupName extends Component {
   };
   changeGroupName = (event) => {
     if (event.keyCode == 13) {
+      //TODO feedback: API请求可以抽到单独的文件中
       URL = `http://localhost:8080/groups/${this.props.group.id}`;
       fetch(URL, {
         method: 'PATCH',

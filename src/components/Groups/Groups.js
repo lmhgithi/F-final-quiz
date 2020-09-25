@@ -10,6 +10,8 @@ class Groups extends Component {
   };
 
   componentDidMount() {
+    //TODO feedback: API请求可以抽到单独的文件中
+
     URL = 'http://localhost:8080/groups';
     fetch(URL, {
       method: 'GET',
@@ -27,6 +29,7 @@ class Groups extends Component {
   }
 
   getGroups = () => {
+    //TODO feedback: API请求可以抽到单独的文件中
     URL = 'http://localhost:8080/groups/auto-grouping';
     fetch(URL, {
       method: 'POST',
@@ -48,6 +51,7 @@ class Groups extends Component {
   render() {
     console.log(this.state.groups)
     return (
+        //  TODO feedback: 页面的模块划分非常明显，需要第一层的div换为section标签更合适
       <div className="students-group">
         <div className="group-header">
           <h2>分组列表</h2>

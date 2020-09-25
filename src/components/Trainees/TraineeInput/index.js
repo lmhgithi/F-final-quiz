@@ -46,14 +46,17 @@ class TraineeInput extends Component {
       <div>
         <p
           className="add-students-botton"
+            //  TODO feedback:给元素绑定event handler function采用这种方式可能会引起不必要的渲染，从而带来性能问题
           onClick={() =>
             this.setState({
+              //TODO feedback: typo error
               displacyForm: true,
             })
           }
         >
           +添加学员
         </p>
+        {/*TODO feedback: 好吧，添加学员需要新开一个页面*/}
         <Modal
           visible={this.state.displacyForm}
           title="添加学员"

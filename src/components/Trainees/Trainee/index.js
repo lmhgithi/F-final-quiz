@@ -9,7 +9,9 @@ class Trainee extends Component {
   };
 
   deleteTrainee = () => {
-    fetch(`http://localhost:8080/traineeDtos/${this.props.trainee.id}`, {
+      //TODO feedback: API请求可以抽到单独的文件中
+
+      fetch(`http://localhost:8080/traineeDtos/${this.props.trainee.id}`, {
       method: 'DELETE',
     }).then((Response) => {
       if (Response.status === 204) {
@@ -43,6 +45,7 @@ class Trainee extends Component {
           title="是否要删除学员"
           visible={this.state.deleteTraineeVisible}
           onOk={this.deleteTrainee}
+          {/*TODO feedback: 之前说过不要使用这种绑定函数的方法*/}
           onCancel={() => this.setState({deleteTraineeVisible: false})}
         >
         </Modal>

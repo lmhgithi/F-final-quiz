@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { message } from 'antd';
 import './trainerInput.scss';
 
+//TODO feedback: 无法从组件名字看出组件的职责
 export default class TrainerInput extends Component {
   state = {
     displayTrainerInput: false,

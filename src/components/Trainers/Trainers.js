@@ -33,9 +33,11 @@ class Trainers extends Component {
 
   render() {
     return (
+      //  TODO feedback: 页面的模块划分非常明显，需要第一层的div换为section标签更合适
       <div className="trainers-list">
         <h2>讲师列表</h2>
         <div className="trainers-list-content">
+          {/*TODO feedback: 列表元素没有使用ul li*/}
           {Object.keys(this.state.trainers).map((key) => (
             <Trainer key={key} trainer={this.state.trainers[key]} getTrainers={this.getTrainers} />
           ))}
